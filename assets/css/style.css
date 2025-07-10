@@ -1,0 +1,581 @@
+/* ====================================
+   YAKELU INFRAESTRUCTURA - Main Styles
+   ==================================== */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* CSS Variables */
+:root {
+    --primary-color: #2d5a6b;
+    --secondary-color: #e67e22;
+    --accent-color: #34495e;
+    --light-gray: #f8f9fa;
+    --white: #ffffff;
+    --text-dark: #2c3e50;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Touch improvements for mobile */
+button, a {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* iOS Safari fixes */
+input, textarea, button {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 8px;
+}
+
+/* ====================================
+   HEADER STYLES
+   ==================================== */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+nav > a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+nav > a img {
+    height: 50px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+nav ul a:hover {
+    color: var(--secondary-color);
+}
+
+.mobile-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.mobile-menu span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: 0.3s;
+}
+
+/* ====================================
+   HERO SECTION
+   ==================================== */
+section:first-of-type {
+    background: linear-gradient(rgba(45, 90, 107, 0.8), rgba(52, 73, 94, 0.8)), 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/><path fill="%23ddd" d="M0 400l100-50 100 50 100-50 100 50 100-50 100 50 100-50 100 50 100-50 100 50 100-50 100 50v200H0z"/></svg>');
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding-top: 80px;
+}
+
+section:first-of-type div {
+    max-width: 800px;
+    padding: 0 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+section:first-of-type h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: white;
+}
+
+section:first-of-type p:first-of-type {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+section:first-of-type p:nth-of-type(2) {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+section:first-of-type a {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+}
+
+section:first-of-type a:hover {
+    background: #d35400;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+}
+
+/* ====================================
+   SECTION STYLES
+   ==================================== */
+section {
+    padding: 4rem 0;
+}
+
+section > div {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+}
+
+/* ====================================
+   ABOUT SECTION
+   ==================================== */
+section:nth-of-type(2) {
+    background: var(--light-gray);
+}
+
+section:nth-of-type(2) > div > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+section:nth-of-type(2) h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+section:nth-of-type(2) p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+section:nth-of-type(2) > div > div > div:first-child > div {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(45, 90, 107, 0.1);
+    border-radius: 8px;
+}
+
+section:nth-of-type(2) > div > div > div:first-child > div p {
+    margin-bottom: 0.5rem;
+}
+
+section:nth-of-type(2) > div > div > div:last-child {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+section:nth-of-type(2) > div > div > div:last-child > div {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+section:nth-of-type(2) > div > div > div:last-child > div span:first-child {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    display: block;
+}
+
+section:nth-of-type(2) > div > div > div:last-child > div span:last-child {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* ====================================
+   SERVICES SECTION
+   ==================================== */
+section:nth-of-type(3) > div > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+section:nth-of-type(3) > div > div > div {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 4px solid var(--secondary-color);
+}
+
+section:nth-of-type(3) > div > div > div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+section:nth-of-type(3) > div > div > div > div {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+section:nth-of-type(3) h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+/* ====================================
+   VALUES SECTION
+   ==================================== */
+section:nth-of-type(4) {
+    background: var(--primary-color);
+    color: white;
+}
+
+section:nth-of-type(4) h2 {
+    color: white;
+}
+
+section:nth-of-type(4) > div > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+section:nth-of-type(4) > div > div > div {
+    text-align: center;
+    padding: 2rem;
+}
+
+section:nth-of-type(4) > div > div > div > div {
+    width: 80px;
+    height: 80px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2rem;
+}
+
+section:nth-of-type(4) h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+/* ====================================
+   EXPERIENCE SECTION
+   ==================================== */
+section:nth-of-type(5) {
+    background: var(--light-gray);
+}
+
+section:nth-of-type(5) > div > div {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section:nth-of-type(5) > div > div::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: var(--secondary-color);
+}
+
+section:nth-of-type(5) > div > div > div {
+    position: relative;
+    margin-bottom: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-left: 2rem;
+}
+
+section:nth-of-type(5) > div > div > div::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 2rem;
+    width: 20px;
+    height: 20px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    border: 4px solid white;
+}
+
+/* ====================================
+   CONTACT SECTION
+   ==================================== */
+section:nth-of-type(6) {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+}
+
+section:nth-of-type(6) h2 {
+    color: white;
+}
+
+section:nth-of-type(6) > div > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+section:nth-of-type(6) h3:first-of-type {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+}
+
+section:nth-of-type(6) > div > div > div:first-child > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+section:nth-of-type(6) > div > div > div:first-child > div > div:first-child {
+    width: 50px;
+    height: 50px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+section:nth-of-type(6) > div > div > div:last-child {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+section:nth-of-type(6) > div > div > div:last-child h3 {
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+form > div {
+    margin-bottom: 1rem;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+form button {
+    background: var(--secondary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+form button:hover {
+    background: #d35400;
+}
+
+/* ====================================
+   FOOTER
+   ==================================== */
+footer {
+    background: var(--text-dark);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+footer > div > div {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+footer > div > div a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background 0.3s;
+    font-size: 0.8rem;
+}
+
+footer > div > div a:hover {
+    background: #d35400;
+}
+
+/* ====================================
+   WHATSAPP FLOAT BUTTON
+   ==================================== */
+body > a:last-child {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    color: white;
+    border-radius: 50px;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-weight: bold;
+}
+
+body > a:last-child:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+}
+
+/* ====================================
+   UTILITY CLASSES
+   ==================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+img, svg {
+    max-width: 100%;
+    height: auto;
+}

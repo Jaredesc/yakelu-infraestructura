@@ -1,0 +1,350 @@
+/* ====================================
+   RESPONSIVE.CSS - Estilos Responsivos
+   ==================================== */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 991px) {
+    section:first-of-type h1 {
+        font-size: 3rem;
+    }
+    
+    section:first-of-type p:first-of-type {
+        font-size: 1.3rem;
+    }
+    
+    section:nth-of-type(2) > div > div {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    section:nth-of-type(6) > div > div {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    section:nth-of-type(2) > div > div > div:last-child {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    section h2 {
+        font-size: 2.2rem;
+    }
+    
+    section:nth-of-type(5) > div > div::before {
+        left: 20px;
+    }
+    
+    section:nth-of-type(5) > div > div > div {
+        margin-left: 0;
+        margin-bottom: 1.5rem;
+    }
+    
+    section:nth-of-type(5) > div > div > div::before {
+        left: -5px;
+    }
+}
+
+/* Small Screens (Mobile) */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--primary-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        font-size: 1.5rem;
+        z-index: 9999;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+
+    section:first-of-type {
+        padding-top: 100px;
+        min-height: 100vh;
+    }
+    
+    section:first-of-type h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    section:first-of-type p:first-of-type {
+        font-size: 1.2rem;
+    }
+    
+    section:first-of-type p:nth-of-type(2) {
+        font-size: 1.1rem;
+    }
+    
+    section {
+        padding: 3rem 0;
+    }
+    
+    section > div {
+        padding: 0 1rem;
+    }
+    
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    section:nth-of-type(2) > div > div > div:last-child {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    section:nth-of-type(3) > div > div {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    section:nth-of-type(3) > div > div > div {
+        padding: 1.5rem;
+    }
+    
+    section:nth-of-type(4) > div > div {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    section:nth-of-type(4) > div > div > div {
+        padding: 1.5rem;
+    }
+    
+    section:nth-of-type(4) > div > div > div > div {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    section:nth-of-type(2) h3 {
+        font-size: 1.5rem;
+    }
+    
+    section:nth-of-type(2) p {
+        font-size: 1rem;
+    }
+    
+    section:nth-of-type(6) > div > div > div:last-child {
+        padding: 1.5rem;
+    }
+    
+    form input,
+    form textarea {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    form button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    section:nth-of-type(5) > div > div > div {
+        padding: 1.5rem;
+    }
+    
+    nav {
+        padding: 0 1rem;
+    }
+
+    nav > a img {
+        height: 40px;
+    }
+
+    nav > a {
+        font-size: 1.4rem;
+    }
+
+    body > a:last-child {
+        bottom: 15px;
+        right: 15px;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra Small Screens (Mobile Portrait) */
+@media (max-width: 479px) {
+    section:first-of-type h1 {
+        font-size: 2rem;
+    }
+    
+    section:first-of-type p:first-of-type {
+        font-size: 1rem;
+    }
+    
+    section:first-of-type p:nth-of-type(2) {
+        font-size: 1rem;
+    }
+    
+    section:first-of-type a {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    section h2 {
+        font-size: 1.8rem;
+    }
+    
+    section:nth-of-type(3) > div > div > div,
+    section:nth-of-type(4) > div > div > div {
+        padding: 1rem;
+    }
+    
+    section:nth-of-type(3) > div > div > div > div,
+    section:nth-of-type(4) > div > div > div > div {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    section:nth-of-type(3) h3 {
+        font-size: 1.1rem;
+    }
+    
+    section:nth-of-type(2) h3 {
+        font-size: 1.3rem;
+    }
+    
+    section:nth-of-type(6) > div > div > div:last-child {
+        padding: 1rem;
+    }
+    
+    section:nth-of-type(6) > div > div > div:last-child h3 {
+        font-size: 1.3rem;
+    }
+    
+    section:nth-of-type(6) h3:first-of-type {
+        font-size: 1.5rem;
+    }
+    
+    section:nth-of-type(6) > div > div > div:first-child > div {
+        margin-bottom: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    section:nth-of-type(6) > div > div > div:first-child > div > div:first-child {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        margin-right: 0;
+    }
+    
+    nav > a {
+        font-size: 1.2rem;
+    }
+    
+    nav > a img {
+        height: 35px;
+    }
+    
+    body > a:last-child {
+        padding: 0.7rem 1rem;
+        font-size: 0.8rem;
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    footer > div > div {
+        gap: 0.5rem;
+    }
+    
+    footer > div > div a {
+        width: 35px;
+        height: 35px;
+        font-size: 0.7rem;
+    }
+    
+    footer {
+        padding: 1.5rem 0;
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    section:first-of-type {
+        height: auto;
+        min-height: 100vh;
+        padding: 6rem 0 2rem;
+    }
+    
+    section:first-of-type h1 {
+        font-size: 2.5rem;
+    }
+    
+    section {
+        padding: 2rem 0;
+    }
+    
+    nav ul.active {
+        gap: 1.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    nav > a img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    body > a:last-child:hover {
+        transform: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    section:first-of-type {
+        background: white;
+        color: black;
+        height: auto;
+        padding: 2rem 0;
+    }
+    
+    section {
+        padding: 1rem 0;
+        break-inside: avoid;
+    }
+    
+    section:nth-of-type(3) > div > div > div,
+    section:nth-of-type(5) > div > div > div {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+    
+    section:nth-of-type(6) > div > div > div:last-child,
+    body > a:last-child,
+    .mobile-menu,
+    footer > div > div {
+        display: none;
+    }
+}
