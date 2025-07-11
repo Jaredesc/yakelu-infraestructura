@@ -1,19 +1,46 @@
-# YAKELU INFRAESTRUCTURA - Sitio Web Corporativo
+# 🏗️ YAKELU INFRAESTRUCTURA - Sitio Web Corporativo
 
-> "Nuestro compromiso su satisfacción"
+<div align="center">
+
+![YAKELU Logo](assets/images/YAKELU%20-%20LOGO%20PRINCIPAL.png)
+
+**"Nuestro compromiso su satisfacción"**
+
+[![GitHub Pages](https://img.shields.io/badge/deploy-GitHub%20Pages-blue.svg)](https://github.com/pages/)
+[![Web3Forms](https://img.shields.io/badge/forms-Web3Forms-green.svg)](https://web3forms.com)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](#)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](#)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](#)
+
+</div>
+
+---
 
 ## 📋 Descripción del Proyecto
 
-Sitio web corporativo moderno y responsivo para **YAKELU INFRAESTRUCTURA S. DE R.L. DE C.V.**, empresa mexicana de construcción e ingeniería con sede en Zacatecas.
+Sitio web corporativo moderno y completamente funcional para **YAKELU INFRAESTRUCTURA S. DE R.L. DE C.V.**, empresa mexicana líder en construcción e ingeniería civil con sede en Zacatecas.
 
-### 🎯 Características Principales
+### 🌟 **Características Destacadas**
 
-- ✅ **Diseño 100% Responsivo** - Compatible con móviles, tablets y desktop
-- ✅ **Optimizado para SEO** - Meta tags, estructura semántica y performance
-- ✅ **Formulario de Contacto Funcional** - Validación en tiempo real
+- ✅ **Diseño 100% Responsivo** - Optimizado para móviles, tablets y desktop
+- ✅ **Formulario de Contacto Funcional** - Integrado con Web3Forms
+- ✅ **Performance Optimizado** - Carga rápida y SEO optimizado
+- ✅ **Navegación Intuitiva** - Header fijo y smooth scrolling
 - ✅ **Animaciones Profesionales** - Efectos suaves y modernos
-- ✅ **Navegación Intuitiva** - Menú fijo y desplazamiento suave
-- ✅ **Carga Rápida** - Código optimizado y assets comprimidos
+- ✅ **Accesibilidad Completa** - Compatible con lectores de pantalla
+- ✅ **Multi-Logo System** - Logos adaptativos según sección
+
+---
+
+## 🚀 Demo en Vivo
+
+**🌐 Sitio Web:** [www.yakeluinfraestructura.org](https://www.yakeluinfraestructura.org)
+
+### 📱 Vista Previa
+
+| Desktop | Tablet | Mobile |
+|---------|--------|--------|
+| ![Desktop Preview](https://via.placeholder.com/300x200?text=Desktop+View) | ![Tablet Preview](https://via.placeholder.com/200x200?text=Tablet+View) | ![Mobile Preview](https://via.placeholder.com/150x200?text=Mobile+View) |
 
 ---
 
@@ -21,283 +48,347 @@ Sitio web corporativo moderno y responsivo para **YAKELU INFRAESTRUCTURA S. DE R
 
 ```
 yakelu-infraestructura/
-├── index.html                 # Página principal
-├── assets/
-│   ├── css/
-│   │   ├── style.css          # Estilos principales
-│   │   └── responsive.css     # Estilos responsivos
-│   ├── js/
-│   │   ├── main.js           # JavaScript principal
-│   │   └── animations.js     # Animaciones y efectos
-│   └── images/
-│       ├── logo/
-│       │   ├── logo.svg      # Logo principal
-│       │   └── favicon.ico   # Icono del sitio
-│       ├── gallery/          # Imágenes de proyectos
-│       └── icons/            # Iconos adicionales
-├── docs/
-│   └── presentacion-corporativa.pdf
-└── README.md                 # Esta documentación
+├── 📄 index.html                      # Página principal
+├── 📄 sitemap.xml                     # Mapa del sitio (SEO)
+├── 📄 robots.txt                      # Configuración bots (SEO)
+├── 📄 404.html                        # Página de error personalizada
+├── 📄 .htaccess                       # Configuración servidor Apache
+├── 📂 assets/
+│   ├── 📂 css/
+│   │   ├── 🎨 style.css               # Estilos principales
+│   │   └── 📱 responsive.css          # Estilos responsivos
+│   ├── 📂 js/
+│   │   ├── ⚡ main.js                 # JavaScript principal
+│   │   └── ✨ animations.js          # Animaciones y efectos
+│   └── 📂 images/
+│       ├── 🖼️ YAKELU - LOGO PRINCIPAL.png    # Logo principal
+│       ├── 🖼️ YAKELU - LOGO POSITIVO.png     # Logo para fondos oscuros
+│       └── 🖼️ YAKELU - LOGO NEGATIVO.png     # Logo para fondos claros
+└── 📄 README.md                       # Esta documentación
 ```
 
 ---
 
-## 🚀 Instalación y Configuración
+## ⚡ Instalación Rápida
 
-### 1. Descarga los Archivos
+### **Opción 1: Clonar Repositorio**
+
 ```bash
-# Crear carpeta del proyecto
-mkdir yakelu-infraestructura
+# Clonar el repositorio
+git clone https://github.com/TU_USUARIO/yakelu-infraestructura.git
+
+# Navegar al directorio
 cd yakelu-infraestructura
 
-# Descargar archivos (copiar el contenido de cada artifact)
+# Abrir en tu editor favorito
+code .
 ```
 
-### 2. Configuración de Hosting
+### **Opción 2: Descarga Directa**
 
-#### Opción A: Hosting Tradicional (Recomendado)
-```bash
-# Subir todos los archivos vía FTP/cPanel
-# Estructura en el servidor:
-public_html/
-├── index.html
-├── assets/
-└── docs/
-```
+1. **Descargar ZIP** desde GitHub
+2. **Extraer** en tu carpeta de proyectos
+3. **Abrir** `index.html` en tu navegador
 
-#### Opción B: GitHub Pages (Gratis)
-```bash
-# Crear repositorio en GitHub
-git init
-git add .
-git commit -m "Initial commit - YAKELU Website"
-git remote add origin [URL-DEL-REPO]
-git push -u origin main
+### **Opción 3: GitHub Pages (Hosting Gratis)**
 
-# Activar GitHub Pages en la configuración del repo
-```
-
-### 3. Configuración del Dominio
-- Apuntar el dominio a la IP del hosting
-- Configurar SSL (HTTPS)
-- Verificar que todos los archivos cargan correctamente
+1. **Fork** este repositorio
+2. **Habilitar GitHub Pages** en Settings
+3. **Tu sitio estará en:** `https://tuusuario.github.io/yakelu-infraestructura`
 
 ---
 
-## 🛠️ Personalización
+## 🔧 Configuración del Formulario
 
-### Cambiar Información de Contacto
+### **📧 Web3Forms (Configurado y Listo)**
 
-**Archivo:** `index.html`
-```html
-<!-- Buscar sección contact-info y modificar -->
-<div class="contact-item">
-    <div class="contact-icon">📞</div>
-    <div>
-        <strong>Teléfonos:</strong><br>
-        +52 492 900 82 26<br>  <!-- CAMBIAR AQUÍ -->
-        +52 492 111 47 71      <!-- CAMBIAR AQUÍ -->
-    </div>
-</div>
+El formulario está **completamente configurado** con:
+
+- **✅ Access Key:** `9d290149-7361-402e-aa9c-ac5bd169f8c7`
+- **✅ Destino Principal:** Tu email configurado
+- **✅ Copia (CC):** `ing.omar@yakelu.org`
+- **✅ Anti-spam:** Protección incluida
+- **✅ Sin límites:** Formulario ilimitado y gratuito
+
+### **🎯 Funcionamiento:**
+
+```
+Cliente llena formulario → Web3Forms procesa → 
+Email llega a tu cuenta + copia al Ing. Omar
 ```
 
-### Cambiar Colores Corporativos
+**El formulario está listo para usar, no requiere configuración adicional.**
 
-**Archivo:** `assets/css/style.css`
+---
+
+## 🎨 Personalización
+
+### **🎨 Cambiar Colores Corporativos**
+
+En `assets/css/style.css`, modifica las variables CSS:
+
 ```css
 :root {
     --primary-color: #2d5a6b;     /* Color principal */
-    --secondary-color: #e67e22;   /* Color naranja */
+    --secondary-color: #e67e22;   /* Color naranja/dorado */
     --accent-color: #34495e;      /* Color de acento */
-    --light-gray: #f8f9fa;        /* Gris claro */
-    --text-dark: #2c3e50;         /* Texto oscuro */
+    --light-gray: #f8f9fa;        /* Fondo claro */
+    --text-dark: #2c3e50;         /* Texto principal */
 }
 ```
 
-### Agregar Nuevos Servicios
+### **📞 Actualizar Información de Contacto**
 
-**Archivo:** `index.html`
+En `index.html`, busca la sección de contacto:
+
 ```html
-<!-- Agregar dentro de .services-grid -->
-<div class="service-card">
-    <div class="service-icon">🔧</div>
-    <h3>Nuevo Servicio</h3>
-    <p>Descripción del nuevo servicio...</p>
-</div>
+<!-- Actualizar teléfonos -->
+<a href="tel:+524929008226">+52 492 900 82 26</a>
+
+<!-- Actualizar emails -->
+<a href="mailto:ing.omar@yakelu.org">ing.omar@yakelu.org</a>
+
+<!-- Actualizar dirección -->
+Francisco I. Madero 206 Ote.<br>
+Centro, Calera, Zac. 98500
 ```
 
-### Modificar Redes Sociales
+### **🏢 Modificar Información de la Empresa**
 
-**Archivo:** `index.html`
 ```html
-<!-- Buscar .social-links y cambiar URLs -->
-<div class="social-links">
-    <a href="https://facebook.com/yakelu" target="_blank">📘</a>
-    <a href="https://instagram.com/yakelu" target="_blank">📸</a>
-    <!-- Agregar más redes -->
-</div>
+<!-- RFC y registros -->
+<strong>RFC:</strong> YIN2106248X9
+<strong>REPSE:</strong> 207853
+<strong>Registro Zacatecas:</strong> DLC/C/140/2024
 ```
 
 ---
 
-## 📧 Configuración del Formulario
+## 📱 Responsive Design
 
-### Opción 1: Formspree (Recomendado - Gratis)
-```html
-<!-- Cambiar en index.html -->
-<form id="contactForm" action="https://formspree.io/f/TU_ID_AQUI" method="POST">
-```
+### **📐 Breakpoints Definidos**
 
-### Opción 2: EmailJS (JavaScript)
-```javascript
-// Agregar en assets/js/main.js
-// Configurar según documentación de EmailJS
-```
+| Dispositivo | Ancho | Optimización |
+|-------------|-------|--------------|
+| 📱 Móvil Pequeño | 320px - 479px | Layout vertical, texto grande |
+| 📱 Móvil Grande | 480px - 768px | Menú hamburguesa, botones táctiles |
+| 📱 Tablet | 769px - 1024px | Grid adaptativo, navegación híbrida |
+| 💻 Desktop | 1025px+ | Layout completo, hover effects |
 
-### Opción 3: Backend PHP (Avanzado)
-```php
-// Crear archivo contact.php en el servidor
-// Configurar envío de emails
-```
+### **✨ Características Responsivas**
+
+- **🍔 Menú hamburguesa** animado en móvil
+- **📐 Grid adaptativo** en servicios y valores
+- **🖼️ Logos escalables** según dispositivo
+- **👆 Botones táctiles** optimizados para touch
+- **📝 Formulario responsivo** con validación
 
 ---
 
-## 🎨 Optimización y SEO
+## 🚀 Tecnologías Utilizadas
 
-### Meta Tags Importantes
-```html
-<meta name="description" content="YAKELU INFRAESTRUCTURA - Empresa mexicana de construcción e ingeniería">
-<meta name="keywords" content="construcción, infraestructura, ingeniería, Zacatecas, México">
-<meta property="og:title" content="YAKELU INFRAESTRUCTURA">
-<meta property="og:image" content="assets/images/logo/og-image.jpg">
-```
+### **Frontend**
+- **HTML5** - Estructura semántica
+- **CSS3** - Estilos modernos + Grid + Flexbox
+- **JavaScript Vanilla** - Interactividad sin dependencias
+- **Font Awesome 6.4.0** - Iconografía profesional
 
-### Google Analytics
+### **Servicios**
+- **Web3Forms** - Procesamiento de formularios
+- **GitHub Pages** - Hosting gratuito (opcional)
+
+### **Performance**
+- **Critical CSS** inlineado
+- **Lazy Loading** para imágenes
+- **Minificación** de assets
+- **Compresión GZIP** habilitada
+
+---
+
+## 📊 SEO y Analytics
+
+### **🔍 SEO Implementado**
+
+- ✅ **Meta tags** optimizados
+- ✅ **Open Graph** para redes sociales
+- ✅ **Schema.org** datos estructurados
+- ✅ **Sitemap.xml** completo
+- ✅ **Robots.txt** configurado
+- ✅ **URLs semánticas**
+
+### **📈 Analytics (Opcional)**
+
+Para habilitar Google Analytics, actualiza en `index.html`:
+
 ```html
-<!-- Agregar antes del </head> -->
+<!-- Reemplazar GA_MEASUREMENT_ID con tu ID real -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID');
-</script>
 ```
-
-### Optimización de Velocidad
-- ✅ Imágenes comprimidas (WebP recomendado)
-- ✅ CSS y JS minificados
-- ✅ Lazy loading implementado
-- ✅ Cache del navegador configurado
 
 ---
 
-## 📱 Breakpoints Responsivos
+## 🛡️ Seguridad
 
-| Dispositivo | Ancho | CSS Media Query |
-|-------------|-------|-----------------|
-| Móvil Pequeño | 320px - 480px | `@media (max-width: 480px)` |
-| Móvil Grande | 481px - 768px | `@media (max-width: 768px)` |
-| Tablet | 769px - 1024px | `@media (max-width: 1024px)` |
-| Desktop | 1025px+ | Estilos base |
+### **🔒 Características de Seguridad**
+
+- **🛡️ Headers de seguridad** en .htaccess
+- **🚫 Protección anti-spam** en formularios
+- **🔐 Sanitización** de inputs
+- **⚡ Rate limiting** automático
+- **🔍 Validación** client-side y server-side
+
+### **📋 Headers Configurados**
+
+```apache
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+```
 
 ---
 
-## 🔧 Mantenimiento
+## 🚀 Despliegue
 
-### Actualizaciones Regulares
-1. **Información de contacto** - Verificar teléfonos y emails
-2. **Proyectos completados** - Agregar nuevas obras
-3. **Certificaciones** - Mantener registros actualizados
-4. **Testimonios** - Agregar reseñas de clientes
+### **🌐 GitHub Pages (Recomendado)**
 
-### Backup y Seguridad
-```bash
-# Backup semanal recomendado
-cp -r yakelu-infraestructura/ backup-$(date +%Y%m%d)/
+1. **Push** tu código al repositorio
+2. **Settings** → **Pages**
+3. **Source:** Deploy from branch `main`
+4. **¡Listo!** Tu sitio estará en línea
 
-# Verificar SSL y certificados
-# Mantener plugins/themes actualizados si usas CMS
-```
+### **🏢 Hosting Tradicional**
 
-### Monitoreo de Performance
-- **Google PageSpeed Insights** - Verificar velocidad
-- **Google Search Console** - Monitorear SEO
-- **Google Analytics** - Analizar tráfico
+1. **Subir archivos** via FTP a `public_html/`
+2. **Configurar dominio** personalizado
+3. **Habilitar SSL** (HTTPS)
+4. **Verificar** que .htaccess funcione
+
+### **☁️ Netlify/Vercel (Alternativas)**
+
+- **Netlify:** Conecta tu repo de GitHub
+- **Vercel:** Deploy automático con `vercel --prod`
+
+---
+
+## 📧 Configuración de Email
+
+### **📮 Para recibir formularios:**
+
+1. **Verificar** que tu email esté confirmado en Web3Forms
+2. **Revisar spam** las primeras veces
+3. **Configurar filtros** para organizar mensajes
+4. **Responder rápido** a consultas de clientes
+
+### **🔄 Auto-respuestas (Opcional):**
+
+Puedes configurar respuestas automáticas en Web3Forms dashboard.
 
 ---
 
 ## 🐛 Solución de Problemas
 
-### Problemas Comunes
+### **❌ Problemas Comunes**
 
-**1. El menú móvil no funciona**
+| Problema | Solución |
+|----------|----------|
+| 📧 Formulario no envía | Verificar Access Key en Web3Forms |
+| 🖼️ Logos no cargan | Verificar rutas en `assets/images/` |
+| 📱 Responsive roto | Verificar viewport meta tag |
+| ⚡ Sitio lento | Comprimir imágenes con TinyPNG |
+| 🔍 No aparece en Google | Subir sitemap.xml a Search Console |
+
+### **🔧 Debug del Formulario**
+
 ```javascript
-// Verificar que main.js está cargando correctamente
-console.log('Main JS loaded');
-```
-
-**2. Las animaciones no se ven**
-```css
-/* Verificar que animations.js está incluido */
-/* Revisar prefers-reduced-motion */
-```
-
-**3. El formulario no envía**
-```html
-<!-- Verificar action del form -->
-<!-- Revisar configuración de Formspree/EmailJS -->
-```
-
-**4. Problemas de responsive**
-```html
-<!-- Verificar viewport meta tag -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+// Abrir consola del navegador y verificar:
+console.log(document.getElementById('contact-form'));
+console.log('Access Key configurado:', 
+    document.querySelector('input[name="access_key"]').value);
 ```
 
 ---
 
-## 📞 Soporte Técnico
+## 📈 Métricas de Performance
 
-### Contacto para Actualizaciones
-- **Desarrollador:** [Tu Nombre]
-- **Email:** [tu@email.com]
-- **Teléfono:** [Tu Teléfono]
+### **⚡ Objetivos de Performance**
 
-### Documentación Técnica
-- **Tecnologías:** HTML5, CSS3, JavaScript Vanilla
-- **Compatibilidad:** IE11+, Chrome, Firefox, Safari, Edge
-- **Framework CSS:** Custom (no dependencies)
-- **Hosting Recomendado:** Hostinger, GoDaddy, Bluehost
+- **🚀 Carga inicial:** < 3 segundos
+- **📱 Mobile Score:** > 90/100
+- **🖥️ Desktop Score:** > 95/100
+- **♿ Accessibility:** > 95/100
+- **🔍 SEO Score:** > 90/100
+
+### **🛠️ Herramientas de Testing**
+
+- **PageSpeed Insights:** [pagespeed.web.dev](https://pagespeed.web.dev)
+- **GTmetrix:** [gtmetrix.com](https://gtmetrix.com)
+- **Lighthouse:** DevTools → Lighthouse
+
+---
+
+## 🤝 Contribución
+
+### **🔀 Workflow de Contribución**
+
+1. **Fork** el repositorio
+2. **Crear rama** para tu feature: `git checkout -b feature/nueva-funcionalidad`
+3. **Commit** cambios: `git commit -m "✨ Agregar nueva funcionalidad"`
+4. **Push** a la rama: `git push origin feature/nueva-funcionalidad`
+5. **Crear Pull Request**
+
+### **📝 Convenciones de Commits**
+
+```
+✨ feat: Nueva funcionalidad
+🐛 fix: Corrección de bug
+📚 docs: Actualización documentación
+🎨 style: Cambios de estilo/formato
+♻️ refactor: Refactorización de código
+⚡ perf: Mejora de performance
+🧪 test: Agregar/actualizar tests
+```
 
 ---
 
 ## 📄 Licencia y Créditos
 
-**Desarrollado para:** YAKELU INFRAESTRUCTURA S. DE R.L. DE C.V.  
-**RFC:** YIN2106248X9  
-**Ubicación:** Francisco I. Madero 206 Ote., Centro, Calera, Zac. 98500  
+### **🏢 Información de la Empresa**
 
-**Derechos de Autor:** © 2024 YAKELU INFRAESTRUCTURA  
-**Desarrollador Web:** [Tu Nombre/Empresa]
+**YAKELU INFRAESTRUCTURA S. DE R.L. DE C.V.**
+- **RFC:** YIN2106248X9
+- **REPSE:** 207853
+- **Registro:** DLC/C/140/2024
+- **Dirección:** Francisco I. Madero 206 Ote., Centro, Calera, Zac. 98500
 
----
+### **📞 Contacto**
 
-## ✅ Checklist de Lanzamiento
+- **📧 Email:** ing.omar@yakelu.org
+- **📱 Teléfono:** +52 492 900 82 26
+- **🌐 Web:** www.yakeluinfraestructura.org
 
-- [ ] Todos los archivos subidos al servidor
-- [ ] Dominio configurado y funcionando
-- [ ] SSL/HTTPS activo
-- [ ] Formulario de contacto probado
-- [ ] Navegación móvil funcionando
-- [ ] Velocidad de carga < 3 segundos
-- [ ] Google Analytics configurado
-- [ ] Meta tags completados
-- [ ] Información de contacto verificada
-- [ ] Backup inicial realizado
+### **⚖️ Derechos**
+
+© 2024 YAKELU INFRAESTRUCTURA S. DE R.L. DE C.V. - Todos los derechos reservados.
 
 ---
 
-**¡Sitio web listo para usar! 🚀**
+## 🙏 Agradecimientos
 
-Para cualquier duda o actualización, contactar al desarrollador.
+- **🎨 Font Awesome** por los iconos
+- **📧 Web3Forms** por el servicio de formularios
+- **🌐 GitHub** por el hosting gratuito
+- **💻 Comunidad Open Source** por las herramientas
+
+---
+
+<div align="center">
+
+### 🚀 **¡Sitio Web Listo Para Generar Más Clientes!**
+
+**"Nuestro compromiso su satisfacción"**
+
+[![⭐ Star en GitHub](https://img.shields.io/github/stars/usuario/yakelu-infraestructura?style=social)](https://github.com/usuario/yakelu-infraestructura)
+[![🍴 Fork](https://img.shields.io/github/forks/usuario/yakelu-infraestructura?style=social)](https://github.com/usuario/yakelu-infraestructura/fork)
+
+</div>

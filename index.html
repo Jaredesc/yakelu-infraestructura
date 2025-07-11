@@ -340,8 +340,8 @@
                             </div>
                             <div class="contact-details">
                                 <strong>Email:</strong><br>
-                                <a href="mailto:direccion@yakelu.org">direccion@yakelu.org</a><br>
-                                <a href="mailto:yakelu_@hotmail.com">yakelu_@hotmail.com</a>
+                                <a href="mailto:ing.omar@yakelu.org">ing.omar@yakelu.org</a><br>
+                                <a href="mailto:direccion@yakelu.org">direccion@yakelu.org</a>
                             </div>
                         </div>
                         
@@ -358,7 +358,23 @@
                     
                     <div class="contact-form-container">
                         <h3>Envíanos un Mensaje</h3>
-                        <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+                        
+                        <!-- FORMULARIO CON WEB3FORMS CONFIGURADO -->
+                        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                            
+                            <!-- CONFIGURACIÓN WEB3FORMS CON TU ACCESS KEY -->
+                            <input type="hidden" name="access_key" value="9d290149-7361-402e-aa9c-ac5bd169f8c7">
+                            <input type="hidden" name="subject" value="🏗️ Nuevo cliente desde YAKELU INFRAESTRUCTURA">
+                            <input type="hidden" name="from_name" value="Sitio Web YAKELU">
+                            
+                            <!-- ENVIAR COPIA AL ING. OMAR -->
+                            <input type="hidden" name="cc" value="ing.omar@yakelu.org">
+                            <input type="hidden" name="replyto" value="ing.omar@yakelu.org">
+                            
+                            <!-- ANTI-SPAM -->
+                            <input type="checkbox" name="botcheck" class="sr-only" style="display: none;">
+                            
+                            <!-- CAMPOS DEL FORMULARIO -->
                             <div class="form-group">
                                 <input type="text" name="nombre" placeholder="Nombre completo *" required 
                                        aria-label="Nombre completo">

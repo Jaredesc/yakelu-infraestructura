@@ -253,14 +253,7 @@ const navigation = {
         
         const currentScrollY = window.scrollY;
         
-        // Header background effect
-        if (currentScrollY > 50) {
-            this.header.classList.add('scrolled');
-        } else {
-            this.header.classList.remove('scrolled');
-        }
-
-        // Update active section
+        // Solo actualizar sección activa, sin cambios de header
         this.updateActiveSection();
         
         state.lastScrollY = currentScrollY;
