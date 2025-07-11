@@ -114,6 +114,40 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        /* Notificaciones personalizadas */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            z-index: 10001;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: slideInNotification 0.3s ease;
+        }
+
+        .notification.success {
+            background: #10b981;
+        }
+
+        .notification.error {
+            background: #ef4444;
+        }
+
+        @keyframes slideInNotification {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
     </style>
     
     <!-- Preload Critical Resources -->
@@ -179,10 +213,10 @@
                         modernización y remodelación de todo tipo de obra. Comprometidos con los 
                         más altos estándares de calidad, eficiencia y seguridad.
                     </p>
-                    <a href="#contact" class="cta-button">
+                    <button onclick="scrollToContact()" class="cta-button">
                         <i class="fas fa-envelope"></i>
                         SOLICITAR COTIZACIÓN
-                    </a>
+                    </button>
                 </div>
                 
                 <!-- Background Pattern -->
@@ -441,52 +475,34 @@
                     <div class="contact-form-container">
                         <h3>Envíanos un Mensaje</h3>
                         
-                        <!-- FORMULARIO CON WEB3FORMS CONFIGURADO PARA RAILWAY -->
-                        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-                            
-                            <!-- CONFIGURACIÓN WEB3FORMS CON TU ACCESS KEY -->
-                            <input type="hidden" name="access_key" value="9d290149-7361-402e-aa9c-ac5bd169f8c7">
-                            <input type="hidden" name="subject" value="🏗️ Nuevo cliente desde YAKELU INFRAESTRUCTURA">
-                            <input type="hidden" name="from_name" value="Sitio Web YAKELU">
-                            
-                            <!-- CONFIGURACIÓN PARA RAILWAY -->
-                            <input type="hidden" name="redirect" value="false">
-                            <input type="hidden" name="apikey" value="9d290149-7361-402e-aa9c-ac5bd169f8c7">
-                            
-                            <!-- ENVIAR COPIA AL ING. OMAR -->
-                            <input type="hidden" name="cc" value="ing.omar@yakelu.org">
-                            <input type="hidden" name="replyto" value="ing.omar@yakelu.org">
-                            
-                            <!-- ANTI-SPAM -->
-                            <input type="checkbox" name="botcheck" class="sr-only" style="display: none;">
-                            
-                            <!-- CAMPOS DEL FORMULARIO -->
+                        <!-- FORMULARIO WEB3FORMS OPTIMIZADO PARA RAILWAY -->
+                        <form id="contact-form">
                             <div class="form-group">
-                                <input type="text" name="nombre" placeholder="Nombre completo *" required 
+                                <input type="text" id="nombre" name="nombre" placeholder="Nombre completo *" required 
                                        aria-label="Nombre completo">
                             </div>
                             
                             <div class="form-group">
-                                <input type="email" name="email" placeholder="Correo electrónico *" required 
+                                <input type="email" id="email" name="email" placeholder="Correo electrónico *" required 
                                        aria-label="Correo electrónico">
                             </div>
                             
                             <div class="form-group">
-                                <input type="tel" name="telefono" placeholder="Teléfono" 
+                                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" 
                                        aria-label="Número de teléfono">
                             </div>
                             
                             <div class="form-group">
-                                <input type="text" name="asunto" placeholder="Asunto *" required 
+                                <input type="text" id="asunto" name="asunto" placeholder="Asunto *" required 
                                        aria-label="Asunto del mensaje">
                             </div>
                             
                             <div class="form-group">
-                                <textarea name="mensaje" rows="5" placeholder="Mensaje *" required 
+                                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Mensaje *" required 
                                           aria-label="Mensaje"></textarea>
                             </div>
                             
-                            <button type="submit" class="submit-btn">
+                            <button type="submit" class="submit-btn" id="submit-btn">
                                 <i class="fas fa-paper-plane"></i>
                                 Enviar Mensaje
                             </button>
@@ -551,74 +567,262 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- JavaScript mejorado para Railway -->
+    <!-- JavaScript optimizado para Web3Forms en Railway -->
     <script>
-        // Prevenir FOUC y manejar carga
-        document.addEventListener('DOMContentLoaded', function() {
-            // Simular carga mínima para UX
-            setTimeout(function() {
-                document.body.classList.add('loaded');
-            }, 1500);
-        });
+        // ================================
+        // WEB3FORMS CONFIGURACIÓN PARA RAILWAY
+        // ================================
+        
+        const WEB3FORMS_ACCESS_KEY = '9d290149-7361-402e-aa9c-ac5bd169f8c7';
+        
+        // Función para scroll al formulario (botón CTA)
+        function scrollToContact() {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                const headerHeight = 100;
+                const elementPosition = contactSection.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        // Función para mostrar notificaciones
+        function showNotification(message, type = 'success') {
+            // Remover notificaciones existentes
+            const existingNotifications = document.querySelectorAll('.notification');
+            existingNotifications.forEach(notification => {
+                notification.remove();
+            });
+            
+            // Crear nueva notificación
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Auto-remover después de 5 segundos
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+        
+        // Función para validar email
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Función principal para enviar formulario con Web3Forms
+        async function enviarFormularioWeb3Forms() {
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const asunto = document.getElementById('asunto').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+            const submitBtn = document.getElementById('submit-btn');
 
-        // Manejar formulario para Railway
+            // Validación frontend
+            if (!nombre || !email || !asunto || !mensaje) {
+                showNotification('Por favor, completa todos los campos obligatorios (*)', 'error');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                showNotification('Por favor, ingresa un email válido', 'error');
+                return;
+            }
+
+            // Mostrar loading
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitBtn.disabled = true;
+
+            try {
+                // Preparar datos para Web3Forms
+                const formData = new FormData();
+                formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+                formData.append('subject', `🏗️ Nuevo cliente desde YAKELU INFRAESTRUCTURA: ${asunto}`);
+                formData.append('from_name', 'Sitio Web YAKELU INFRAESTRUCTURA');
+                formData.append('to_email', 'ing.omar@yakelu.org');
+                formData.append('cc', 'direccion@yakelu.org');
+                formData.append('nombre', nombre);
+                formData.append('email', email);
+                formData.append('telefono', telefono || 'No proporcionado');
+                formData.append('asunto', asunto);
+                formData.append('mensaje', mensaje);
+                formData.append('website', window.location.href);
+                formData.append('fecha', new Date().toLocaleString('es-MX'));
+                
+                // Campos anti-spam
+                formData.append('botcheck', '');
+                formData.append('redirect', 'false');
+
+                console.log('Enviando formulario a Web3Forms...');
+
+                // Enviar a Web3Forms con configuración específica para Railway
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'cors',
+                    credentials: 'omit'
+                });
+
+                console.log('Respuesta de Web3Forms:', response.status);
+
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('Resultado:', result);
+                    
+                    if (result.success) {
+                        showNotification('¡Mensaje enviado exitosamente! Te contactaremos pronto.', 'success');
+                        document.getElementById('contact-form').reset();
+                    } else {
+                        throw new Error(result.message || 'Error en el envío');
+                    }
+                } else {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
+
+            } catch (error) {
+                console.error('Error enviando formulario:', error);
+                showNotification('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos directamente.', 'error');
+            } finally {
+                // Restaurar botón
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        // ================================
+        // INICIALIZACIÓN Y EVENT LISTENERS
+        // ================================
+        
         document.addEventListener('DOMContentLoaded', function() {
+            // Manejo del formulario
             const form = document.getElementById('contact-form');
             if (form) {
-                form.addEventListener('submit', async function(e) {
+                form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
-                    const submitBtn = form.querySelector('.submit-btn');
-                    const originalText = submitBtn.innerHTML;
-                    
-                    // Mostrar loading
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-                    submitBtn.disabled = true;
-                    
-                    try {
-                        const formData = new FormData(form);
-                        
-                        const response = await fetch('https://api.web3forms.com/submit', {
-                            method: 'POST',
-                            body: formData
-                        });
-                        
-                        if (response.ok) {
-                            // Éxito
-                            alert('¡Mensaje enviado exitosamente! Te contactaremos pronto.');
-                            form.reset();
-                        } else {
-                            throw new Error('Error en el envío');
-                        }
-                    } catch (error) {
-                        // Error
-                        alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos directamente.');
-                        console.error('Error:', error);
-                    } finally {
-                        // Restaurar botón
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                    }
+                    enviarFormularioWeb3Forms();
                 });
             }
+
+            // Navegación y menú móvil
+            const mobileMenuBtn = document.querySelector('.mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            let isMenuOpen = false;
+
+            // Toggle menú móvil
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    isMenuOpen = !isMenuOpen;
+                    
+                    mobileMenuBtn.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+                    
+                    mobileMenuBtn.setAttribute('aria-expanded', isMenuOpen);
+                });
+            }
+
+            // Navegación suave
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerHeight = 100;
+                        const elementPosition = targetElement.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: elementPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Cerrar menú móvil
+                        if (isMenuOpen) {
+                            isMenuOpen = false;
+                            mobileMenuBtn.classList.remove('active');
+                            navMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                            mobileMenuBtn.setAttribute('aria-expanded', false);
+                        }
+                    }
+                });
+            });
+
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', function(e) {
+                if (isMenuOpen && !navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    isMenuOpen = false;
+                    mobileMenuBtn.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    mobileMenuBtn.setAttribute('aria-expanded', false);
+                }
+            });
+
+            // Contador animado
+            const counters = document.querySelectorAll('.stat-number');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counters.forEach(counter => observer.observe(counter));
+
+            // Simular carga para UX
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 1000);
         });
 
-        // Smooth scrolling para el botón CTA
-        document.addEventListener('DOMContentLoaded', function() {
-            const ctaButton = document.querySelector('.cta-button');
-            if (ctaButton) {
-                ctaButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector('#contact');
-                    if (target) {
-                        target.scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            }
+        function animateCounter(element) {
+            const target = parseInt(element.dataset.count) || 0;
+            const duration = 2000;
+            const step = target / (duration / 50);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                
+                if (target === 24) {
+                    element.textContent = current >= target ? '24/7' : Math.floor(current);
+                } else if (target >= 100) {
+                    element.textContent = Math.floor(current) + '+';
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 50);
+        }
+
+        // Inicialización final
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+            console.log('✅ YAKELU INFRAESTRUCTURA - Sitio web con Web3Forms cargado correctamente');
         });
+
+        // Debug para Web3Forms
+        console.log('🔧 Web3Forms Access Key configurado:', WEB3FORMS_ACCESS_KEY);
     </script>
 
     <!-- JavaScript Files -->
