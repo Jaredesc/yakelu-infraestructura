@@ -1241,3 +1241,28 @@ css/* FORZAR VALORES DE CONTADORES */
     }
 }
 
+/* WHATSAPP COMPATIBLE - SIN :has() */
+@media (max-width: 768px) {
+    /* WhatsApp normal en móvil */
+    .whatsapp-float {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    /* Cuando menú esté activo, bajar Z-index de WhatsApp */
+    .whatsapp-float {
+        z-index: 1000;
+    }
+    
+    /* Clase que se agregará cuando menú esté abierto */
+    .menu-abierto .whatsapp-float {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(100px) !important;
+        z-index: 1 !important;
+    }
+}

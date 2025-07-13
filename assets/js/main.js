@@ -102,10 +102,12 @@ function handleMenuToggle(e) {
 }
 
 function openMenu() {
+    
     console.log('Abriendo menú...');
     
     mobileMenuBtn.classList.add('active');
     navMenu.classList.add('active');
+    document.body.classList.add('menu-abierto'); 
     
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
@@ -125,6 +127,7 @@ function closeMenu() {
     
     mobileMenuBtn.classList.remove('active');
     navMenu.classList.remove('active');
+    document.body.classList.remove('menu-abierto');
     
     document.body.style.overflow = '';
     document.body.style.position = '';
