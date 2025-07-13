@@ -281,8 +281,10 @@ function animateCounter(element) {
         
         if (target === 24) {
             element.textContent = current >= target ? '24/7' : Math.floor(current);
-        } else if (target >= 100) {
-            element.textContent = Math.floor(current) + '+';
+        } else if (target === 20) {
+            element.textContent = current >= target ? '20+' : Math.floor(current);
+        } else if (target === 100) {
+            element.textContent = current >= target ? '100+' : Math.floor(current);
         } else {
             element.textContent = Math.floor(current);
         }
@@ -429,5 +431,6 @@ window.YakeluApp = {
     testMobileMenu: testMobileMenu,
     emergencyMenuFix: emergencyMenuFix
 };
+
 
 console.log('Main.js cargado completamente');
