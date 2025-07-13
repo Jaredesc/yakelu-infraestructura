@@ -1240,3 +1240,14 @@ css/* FORZAR VALORES DE CONTADORES */
         padding: 0.8rem 1rem 0;
     }
 }
+
+/* OCULTAR WHATSAPP CUANDO MENÚ MÓVIL ESTÉ ABIERTO */
+@media (max-width: 768px) {
+    body:has(.nav-menu.active) .whatsapp-float {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(100px) scale(0.8) !important;
+        transition: all 0.3s ease !important;
+    }
+}
