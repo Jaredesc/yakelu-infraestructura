@@ -1,44 +1,214 @@
 /**
- * YAKELU INFRAESTRUCTURA - JavaScript Simplificado para Railway
- * ==========================================================
+ * YAKELU INFRAESTRUCTURA - JavaScript Limpio
+ * =========================================
  */
 
 // Variables globales
 let isMenuOpen = false;
+let mobileMenuBtn = null;
+let navMenu = null;
 
-// Inicialización cuando el DOM esté listo
+console.log('YAKELU - Iniciando sistema...');
+
+// Inicialización principal
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM cargado - Iniciando componentes...');
+    
+    initMobileMenu();
     initNavigation();
     initCounters();
     initScrollEffects();
-    console.log('✅ YAKELU - Sistema iniciado correctamente');
+    initNuevoBotónCTA();
+    
+    console.log('YAKELU - Sistema iniciado correctamente');
 });
 
-// ====================================
-// NAVEGACIÓN
-// ====================================
-function initNavigation() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
+// MENÚ MÓVIL - SOLUCIÓN DEFINITIVA
+function initMobileMenu() {
+    console.log('Inicializando menú móvil...');
     
-    // Menú móvil
-    if (mobileMenuBtn && navMenu) {
-        mobileMenuBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleMobileMenu();
-        });
-        
-        // Cerrar menú al hacer clic fuera
-        document.addEventListener('click', function(e) {
-            if (isMenuOpen && !navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                closeMobileMenu();
-            }
-        });
+    mobileMenuBtn = document.querySelector('.mobile-menu');
+    navMenu = document.querySelector('.nav-menu');
+    
+    console.log('- Botón encontrado:', !!mobileMenuBtn);
+    console.log('- Menú encontrado:', !!navMenu);
+    
+    if (!mobileMenuBtn || !navMenu) {
+        console.error('Elementos del menú no encontrados');
+        return;
     }
     
-    // Navegación suave
-    navLinks.forEach(link => {
+    // Asegurar que el botón sea clickeable
+    mobileMenuBtn.style.pointerEvents = 'auto';
+    mobileMenuBtn.style.zIndex = '10001';
+    mobileMenuBtn.style.position = 'relative';
+    mobileMenuBtn.style.display = 'flex';
+    
+    console.log('Propiedades del botón aseguradas');
+    
+    // Event listeners
+    mobileMenuBtn.addEventListener('click', handleMenuToggle, true);
+    mobileMenuBtn.addEventListener('touchstart', handleMenuToggle, true);
+    
+    // Fallback onclick directo
+    mobileMenuBtn.onclick = handleMenuToggle;
+    
+    // Cerrar menú al hacer click en links
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            console.log('Click en link:', this.textContent);
+            if (isMenuOpen) {
+                closeMenu();
+            }
+        });
+    });
+    
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', function(e) {
+        if (isMenuOpen && 
+            !navMenu.contains(e.target) && 
+            !mobileMenuBtn.contains(e.target)) {
+            console.log('Click fuera del menú');
+            closeMenu();
+        }
+    });
+    
+    // Test del botón
+    setTimeout(testMobileMenu, 1000);
+    
+    console.log('Menú móvil inicializado');
+}
+
+function handleMenuToggle(e) {
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (e.type === 'touchend' && e.touches && e.touches.length > 0) {
+            return;
+        }
+    }
+    
+    console.log('Toggle menú. Estado actual:', isMenuOpen);
+    
+    isMenuOpen = !isMenuOpen;
+    
+    if (isMenuOpen) {
+        openMenu();
+    } else {
+        closeMenu();
+    }
+}
+
+function openMenu() {
+    console.log('Abriendo menú...');
+    
+    mobileMenuBtn.classList.add('active');
+    navMenu.classList.add('active');
+    
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.height = '100%';
+    
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    navMenu.setAttribute('aria-hidden', 'false');
+    
+    console.log('Menú ABIERTO');
+}
+
+function closeMenu() {
+    console.log('Cerrando menú...');
+    
+    isMenuOpen = false;
+    
+    mobileMenuBtn.classList.remove('active');
+    navMenu.classList.remove('active');
+    
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.height = '';
+    
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    navMenu.setAttribute('aria-hidden', 'true');
+    
+    console.log('Menú CERRADO');
+}
+
+function testMobileMenu() {
+    console.log('Testeando menú móvil...');
+    
+    if (!mobileMenuBtn) {
+        console.error('Botón no encontrado en test');
+        return;
+    }
+    
+    const rect = mobileMenuBtn.getBoundingClientRect();
+    const styles = window.getComputedStyle(mobileMenuBtn);
+    
+    console.log('Posición del botón:', {
+        top: rect.top,
+        left: rect.left,
+        width: rect.width,
+        height: rect.height,
+        visible: rect.width > 0 && rect.height > 0
+    });
+    
+    console.log('Estilos del botón:', {
+        display: styles.display,
+        visibility: styles.visibility,
+        pointerEvents: styles.pointerEvents,
+        zIndex: styles.zIndex,
+        position: styles.position
+    });
+    
+    const isVisible = mobileMenuBtn.offsetParent !== null;
+    const isClickable = styles.pointerEvents !== 'none';
+    
+    console.log('Resultados del test:');
+    console.log('- Botón visible:', isVisible);
+    console.log('- Botón clickeable:', isClickable);
+    
+    if (!isVisible || !isClickable) {
+        console.warn('Problema detectado - Aplicando fix de emergencia...');
+        emergencyMenuFix();
+    } else {
+        console.log('Menú móvil funcionando correctamente');
+    }
+}
+
+function emergencyMenuFix() {
+    console.log('Aplicando fix de emergencia...');
+    
+    if (!mobileMenuBtn) return;
+    
+    mobileMenuBtn.style.display = 'flex';
+    mobileMenuBtn.style.visibility = 'visible';
+    mobileMenuBtn.style.opacity = '1';
+    mobileMenuBtn.style.pointerEvents = 'auto';
+    mobileMenuBtn.style.zIndex = '10001';
+    mobileMenuBtn.style.position = 'relative';
+    mobileMenuBtn.style.cursor = 'pointer';
+    
+    if (window.innerWidth <= 768) {
+        mobileMenuBtn.style.display = 'flex';
+    }
+    
+    mobileMenuBtn.removeEventListener('click', handleMenuToggle);
+    mobileMenuBtn.addEventListener('click', handleMenuToggle, true);
+    
+    console.log('Fix de emergencia aplicado');
+}
+
+// NAVEGACIÓN GENERAL
+function initNavigation() {
+    console.log('Inicializando navegación...');
+    
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(function(link) {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
@@ -46,34 +216,14 @@ function initNavigation() {
             
             if (targetElement) {
                 smoothScrollTo(targetElement);
-                closeMobileMenu();
+                if (isMenuOpen) {
+                    closeMenu();
+                }
             }
         });
     });
-}
-
-function toggleMobileMenu() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu');
-    const navMenu = document.querySelector('.nav-menu');
     
-    isMenuOpen = !isMenuOpen;
-    
-    mobileMenuBtn.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-    
-    mobileMenuBtn.setAttribute('aria-expanded', isMenuOpen);
-}
-
-function closeMobileMenu() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    isMenuOpen = false;
-    mobileMenuBtn.classList.remove('active');
-    navMenu.classList.remove('active');
-    document.body.style.overflow = '';
-    mobileMenuBtn.setAttribute('aria-expanded', false);
+    console.log('Navegación inicializada');
 }
 
 function smoothScrollTo(element) {
@@ -86,16 +236,19 @@ function smoothScrollTo(element) {
     });
 }
 
-// ====================================
 // CONTADORES ANIMADOS
-// ====================================
 function initCounters() {
+    console.log('Inicializando contadores...');
+    
     const counters = document.querySelectorAll('.stat-number');
     
-    if (counters.length === 0) return;
+    if (counters.length === 0) {
+        console.log('- No hay contadores para animar');
+        return;
+    }
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 animateCounter(entry.target);
                 observer.unobserve(entry.target);
@@ -106,7 +259,11 @@ function initCounters() {
         rootMargin: '0px 0px -100px 0px'
     });
     
-    counters.forEach(counter => observer.observe(counter));
+    counters.forEach(function(counter) {
+        observer.observe(counter);
+    });
+    
+    console.log(counters.length + ' contadores configurados');
 }
 
 function animateCounter(element) {
@@ -115,14 +272,13 @@ function animateCounter(element) {
     const step = target / (duration / 50);
     let current = 0;
     
-    const timer = setInterval(() => {
+    const timer = setInterval(function() {
         current += step;
         if (current >= target) {
             current = target;
             clearInterval(timer);
         }
         
-        // Formatear según el tipo
         if (target === 24) {
             element.textContent = current >= target ? '24/7' : Math.floor(current);
         } else if (target >= 100) {
@@ -133,35 +289,37 @@ function animateCounter(element) {
     }, 50);
 }
 
-// ====================================
 // EFECTOS DE SCROLL
-// ====================================
 function initScrollEffects() {
-    // Sección activa en navegación
+    console.log('Inicializando efectos de scroll...');
+    
     window.addEventListener('scroll', throttle(updateActiveSection, 100));
     
-    // Animaciones al aparecer
     const animatedElements = document.querySelectorAll('.service-card, .value-item, .timeline-item');
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
+    if (animatedElements.length > 0) {
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s ease';
-        observer.observe(el);
-    });
+        
+        animatedElements.forEach(function(el) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+        
+        console.log(animatedElements.length + ' elementos con animación configurados');
+    }
 }
 
 function updateActiveSection() {
@@ -169,237 +327,107 @@ function updateActiveSection() {
     const navLinks = document.querySelectorAll('.nav-link');
     let current = '';
     
-    sections.forEach(section => {
+    sections.forEach(function(section) {
         const rect = section.getBoundingClientRect();
         if (rect.top <= 150 && rect.bottom >= 150) {
             current = section.getAttribute('id');
         }
     });
     
-    navLinks.forEach(link => {
+    navLinks.forEach(function(link) {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
+        if (link.getAttribute('href') === '#' + current) {
             link.classList.add('active');
         }
     });
 }
 
-// ====================================
+// NUEVO BOTÓN CTA
+function initNuevoBotónCTA() {
+    console.log('Inicializando botón CTA...');
+    
+    const nuevoCTA = document.getElementById('yakelu-cta-nuevo');
+    
+    if (!nuevoCTA) {
+        console.log('- Botón CTA no encontrado');
+        return;
+    }
+    
+    function scrollSuaveAContacto(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const contactSection = document.getElementById('contact');
+        
+        if (!contactSection) {
+            console.error('Sección contacto no encontrada');
+            return;
+        }
+        
+        contactSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+        
+        nuevoCTA.style.transform = 'scale(0.95)';
+        setTimeout(function() {
+            nuevoCTA.style.transform = '';
+        }, 150);
+    }
+    
+    nuevoCTA.addEventListener('click', scrollSuaveAContacto, true);
+    nuevoCTA.addEventListener('touchstart', scrollSuaveAContacto, true);
+    nuevoCTA.onclick = scrollSuaveAContacto;
+    
+    console.log('Botón CTA configurado');
+}
+
 // UTILIDADES
-// ====================================
 function throttle(func, wait) {
     let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
+    return function executedFunction() {
+        const args = arguments;
+        const later = function() {
             clearTimeout(timeout);
-            func(...args);
+            func.apply(this, args);
         };
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
 }
 
-// ====================================
-// INICIALIZACIÓN GLOBAL
-// ====================================
+// INICIALIZACIÓN FINAL
 window.addEventListener('load', function() {
-    // Asegurar que todo esté cargado
     document.body.classList.add('loaded');
     
-    // Mostrar mensaje de confirmación en consola
-    console.log('🚀 YAKELU INFRAESTRUCTURA - Sitio web cargado completamente');
+    setTimeout(function() {
+        if (window.innerWidth <= 768) {
+            testMobileMenu();
+        }
+    }, 2000);
+    
+    console.log('YAKELU INFRAESTRUCTURA - Sitio web cargado completamente');
 });
 
-// Manejar errores globales
+// Manejo de errores
 window.addEventListener('error', function(e) {
     console.error('Error en el sitio:', e.error);
 });
 
-// Export para uso externo si es necesario
+// Manejo de redimensionado
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768 && isMenuOpen) {
+        closeMenu();
+    }
+});
+
+// Export para debugging
 window.YakeluApp = {
-    toggleMobileMenu,
-    closeMobileMenu,
-    smoothScrollTo
+    isMenuOpen: isMenuOpen,
+    openMenu: openMenu,
+    closeMenu: closeMenu,
+    testMobileMenu: testMobileMenu,
+    emergencyMenuFix: emergencyMenuFix
 };
 
-// ====================================
-// NUEVO BOTÓN CTA - YAKELU INFRAESTRUCTURA
-// ====================================
-
-function initNuevoBotónCTA() {
-    console.log('🚀 Inicializando nuevo botón CTA YAKELU...');
-    
-    const nuevoCTA = document.getElementById('yakelu-cta-nuevo');
-    
-    if (!nuevoCTA) {
-        console.error('❌ Nuevo botón CTA no encontrado');
-        return;
-    }
-    
-    console.log('✅ Nuevo botón CTA encontrado:', nuevoCTA);
-    
-    // Función de scroll mejorada
-    function scrollSuaveAContacto(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        console.log('🎯 Ejecutando scroll a contacto...');
-        
-        const contactSection = document.getElementById('contact');
-        
-        if (!contactSection) {
-            console.error('❌ Sección contacto no encontrada');
-            return;
-        }
-        
-        // Scroll directo y simple
-        contactSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-        
-        // Feedback visual
-        nuevoCTA.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            nuevoCTA.style.transform = '';
-        }, 150);
-        
-        // Highlight en la sección de contacto
-        setTimeout(() => {
-            contactSection.style.background = 'linear-gradient(135deg, #2d5a6b, #34495e)';
-            contactSection.style.boxShadow = '0 0 30px rgba(230, 126, 34, 0.8)';
-            
-            setTimeout(() => {
-                contactSection.style.boxShadow = '';
-            }, 2000);
-        }, 500);
-        
-        console.log('✅ Scroll ejecutado correctamente');
-    }
-    
-    // Event listeners múltiples para máxima compatibilidad
-    nuevoCTA.addEventListener('click', scrollSuaveAContacto, true);
-    nuevoCTA.addEventListener('touchstart', scrollSuaveAContacto, true);
-    
-    // Fallback con onclick directo
-    nuevoCTA.onclick = scrollSuaveAContacto;
-    
-    // Test de funcionalidad
-    console.log('🧪 Testing nuevo botón CTA...');
-    console.log('- Elemento visible:', nuevoCTA.offsetParent !== null);
-    console.log('- Elemento habilitado:', !nuevoCTA.disabled);
-    console.log('- Z-index:', window.getComputedStyle(nuevoCTA).zIndex);
-    console.log('- Pointer events:', window.getComputedStyle(nuevoCTA).pointerEvents);
-    
-    // Verificar que la sección contacto existe
-    const contactSection = document.getElementById('contact');
-    console.log('- Sección contacto encontrada:', !!contactSection);
-    
-    if (contactSection) {
-        console.log('- Posición contacto:', contactSection.offsetTop);
-    }
-    
-    console.log('✅ Nuevo botón CTA inicializado correctamente');
-}
-
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    // Delay para asegurar que todo esté cargado
-    setTimeout(initNuevoBotónCTA, 100);
-});
-
-// Backup cuando la ventana esté completamente cargada
-window.addEventListener('load', function() {
-    setTimeout(initNuevoBotónCTA, 200);
-});
-
-// Exponer función globalmente para debug
-window.initNuevoBotónCTA = initNuevoBotónCTA;   
-
-async function enviarFormularioWeb3Forms() {
-    const nombre = document.getElementById('nombre').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
-    const asunto = document.getElementById('asunto').value.trim();
-    const mensaje = document.getElementById('mensaje').value.trim();
-    const submitBtn = document.getElementById('submit-btn');
-
-    // Validación frontend
-    if (!nombre || !email || !asunto || !mensaje) {
-        showNotification('Por favor, completa todos los campos obligatorios (*)', 'error');
-        return;
-    }
-
-    if (!isValidEmail(email)) {
-        showNotification('Por favor, ingresa un email válido', 'error');
-        return;
-    }
-
-    // Mostrar loading
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-    submitBtn.disabled = true;
-
-    try {
-        // Preparar datos para Web3Forms
-        const formData = new FormData();
-        formData.append('access_key', '9d290149-7361-402e-aa9c-ac5bd169f8c7');
-        formData.append('subject', `🏗️ Nuevo cliente desde YAKELU INFRAESTRUCTURA: ${asunto}`);
-        formData.append('from_name', 'Sitio Web YAKELU INFRAESTRUCTURA');
-        formData.append('to_email', 'ing.omar@yakelu.org');
-        formData.append('cc', 'direccion@yakelu.org');
-        formData.append('nombre', nombre);
-        formData.append('email', email);
-        formData.append('telefono', telefono || 'No proporcionado');
-        formData.append('asunto', asunto);
-        formData.append('mensaje', mensaje);
-        formData.append('website', window.location.href);
-        formData.append('fecha', new Date().toLocaleString('es-MX'));
-        
-        // Campos anti-spam
-        formData.append('botcheck', '');
-        formData.append('redirect', 'false');
-
-        console.log('📧 Enviando formulario a Web3Forms...');
-
-        const response = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: formData,
-            mode: 'cors',
-            credentials: 'omit'
-        });
-
-        console.log('📧 Respuesta:', response.status);
-
-        // ESTRATEGIA OPTIMISTA: Asumir éxito si status es 2xx
-        if (response.status >= 200 && response.status < 300) {
-            showNotification('¡Mensaje enviado exitosamente! Te contactaremos pronto.', 'success');
-            document.getElementById('contact-form').reset();
-        } else {
-            // Incluso con otros status, asumir que se envió
-            showNotification('Mensaje procesado correctamente. Te contactaremos pronto.', 'success');
-            document.getElementById('contact-form').reset();
-        }
-
-    } catch (error) {
-        console.error('❌ Error:', error.message);
-        
-        // CLAVE: Asumir éxito en errores de red
-        if (error.message.includes('Failed to fetch') || 
-            error.message.includes('network') || 
-            error.message.includes('NetworkError') ||
-            error.message.includes('CORS')) {
-            // Error de red pero probablemente se envió
-            showNotification('¡Mensaje enviado exitosamente!', 'success');
-            document.getElementById('contact-form').reset();
-        } else {
-            // Otros errores - aún asumir éxito
-            showNotification('Mensaje procesado correctamente. Te contactaremos pronto.', 'success');
-            document.getElementById('contact-form').reset();
-        }
-    } finally {
-        // Restaurar botón SIEMPRE
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    }
-}
+console.log('Main.js cargado completamente');
