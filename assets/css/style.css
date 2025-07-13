@@ -1241,38 +1241,3 @@ css/* FORZAR VALORES DE CONTADORES */
     }
 }
 
-@media (max-width: 768px) {
-    /* WhatsApp normal en móvil */
-    .whatsapp-float {
-        display: flex !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        pointer-events: auto !important;
-        z-index: 1000 !important;
-        transition: all 0.3s ease !important;
-    }
-    
-    /* Ocultar WhatsApp cuando menú esté abierto */
-    body:has(.nav-menu.active) .whatsapp-float {
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
-        transform: translateY(100px) !important;
-    }
-    
-    /* Fallback para navegadores que no soporten :has() */
-    .nav-menu.active ~ .whatsapp-float,
-    .menu-open .whatsapp-float {
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
-        transform: translateY(100px) !important;
-    }
-}
-
-/* Asegurar que WhatsApp tenga Z-index bajo cuando menú esté abierto */
-@media (max-width: 768px) {
-    body:has(.nav-menu.active) .whatsapp-float {
-        z-index: 1 !important;
-    }
-}
