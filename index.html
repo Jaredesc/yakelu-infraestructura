@@ -889,6 +889,30 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script>
+// Ocultar WhatsApp cuando menú móvil esté abierto
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu');
+    const whatsappBtn = document.querySelector('.whatsapp-float');
+    
+    if (mobileMenuBtn && whatsappBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            setTimeout(() => {
+                const menuActive = document.querySelector('.nav-menu.active');
+                if (menuActive) {
+                    whatsappBtn.style.opacity = '0';
+                    whatsappBtn.style.visibility = 'hidden';
+                    whatsappBtn.style.pointerEvents = 'none';
+                } else {
+                    whatsappBtn.style.opacity = '1';
+                    whatsappBtn.style.visibility = 'visible';
+                    whatsappBtn.style.pointerEvents = 'auto';
+                }
+            }, 100);
+        });
+    }
+});
+</script>
 
 
     <!-- JavaScript Files -->
