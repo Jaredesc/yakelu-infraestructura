@@ -862,6 +862,28 @@
         // Debug para Web3Forms
         console.log('🔧 Web3Forms Access Key configurado:', WEB3FORMS_ACCESS_KEY);
     </script>
+    <script>
+// SCRIPT SUPER SIMPLE PARA MENÚ
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.querySelector('.mobile-menu');
+    const menu = document.querySelector('.nav-menu');
+    
+    if (btn && menu) {
+        btn.onclick = function() {
+            menu.classList.toggle('active');
+            btn.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        };
+        
+        console.log('Menú funcionando');
+    }
+});
+</script>
 
     <!-- JavaScript Files -->
     <script src="assets/js/main.js"></script>
