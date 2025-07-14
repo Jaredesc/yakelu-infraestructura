@@ -1241,24 +1241,18 @@ css/* FORZAR VALORES DE CONTADORES */
     }
 }
 
-/* FUERZA BRUTA - OCULTAR WHATSAPP EN MÓVIL /
+/* ELIMINAR WHATSAPP EN MÓVIL - FUERZA BRUTA */
 @media (max-width: 768px) {
-    / Ocultar completamente en móvil */
-    .whatsapp-float {
+    .whatsapp-float,
+    a[href*="wa.me"],
+    a[aria-label*="WhatsApp"],
+    *[class*="whatsapp"] {
         display: none !important;
         opacity: 0 !important;
         visibility: hidden !important;
         pointer-events: none !important;
-    }
-
-    /* Backup por clase específica /
-    a[href="wa.me"] {
-        display: none !important;
-    }
-
-    /* Backup por texto /
-    a[aria-label="WhatsApp"] {
-        display: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
     }
 }
-    
