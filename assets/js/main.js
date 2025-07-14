@@ -434,5 +434,49 @@ window.YakeluApp = {
     emergencyMenuFix: emergencyMenuFix
 };
 
+// BOTÓN VOLVER ARRIBA
+function initBackToTop() {
+    console.log('Inicializando botón volver arriba...');
+    
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    if (!backToTopBtn) {
+        console.log('- Botón back-to-top no encontrado');
+        return;
+    }
+    
+    // Mostrar/ocultar botón según scroll
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+    
+    // Función de scroll hacia arriba
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    console.log('Botón volver arriba configurado');
+}
+
+// Agregar esta línea en la función de DOMContentLoaded (línea ~25)
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM cargado - Iniciando componentes...');
+    
+    initMobileMenu();
+    initNavigation();
+    initCounters();
+    initScrollEffects();
+    initNuevoBotónCTA();
+    initBackToTop(); // ← AGREGAR ESTA LÍNEA
+    
+    console.log('YAKELU - Sistema iniciado correctamente');
+});
 
 console.log('Main.js cargado completamente');
