@@ -474,12 +474,6 @@
         font-size: 0.9rem;
     }
     
-    .whatsapp-float {
-        bottom: 20px;
-        right: 15px;
-        padding: 0.9rem 1.3rem;
-        font-size: 0.9rem;
-    }
     
     /* Prevenir scroll cuando menú está abierto */
     body:has(.nav-menu.active) {
