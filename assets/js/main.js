@@ -1,6 +1,6 @@
 /**
- * YAKELU INFRAESTRUCTURA - JavaScript Limpio
- * =========================================
+ * YAKELU INFRAESTRUCTURA - JavaScript Completo
+ * =============================================
  */
 
 // Variables globales
@@ -10,7 +10,9 @@ let navMenu = null;
 
 console.log('YAKELU - Iniciando sistema...');
 
-// Inicialización principal
+// ====================================
+// INICIALIZACIÓN PRINCIPAL
+// ====================================
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM cargado - Iniciando componentes...');
     
@@ -19,11 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
     initCounters();
     initScrollEffects();
     initNuevoBotónCTA();
+    initDownloadButton();
+    initBackToTop();
     
     console.log('YAKELU - Sistema iniciado correctamente');
 });
 
+// ====================================
 // MENÚ MÓVIL - SOLUCIÓN DEFINITIVA
+// ====================================
 function initMobileMenu() {
     console.log('Inicializando menú móvil...');
     
@@ -102,12 +108,10 @@ function handleMenuToggle(e) {
 }
 
 function openMenu() {
-    
     console.log('Abriendo menú...');
     
     mobileMenuBtn.classList.add('active');
     navMenu.classList.add('active');
-    
     
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
@@ -204,7 +208,9 @@ function emergencyMenuFix() {
     console.log('Fix de emergencia aplicado');
 }
 
+// ====================================
 // NAVEGACIÓN GENERAL
+// ====================================
 function initNavigation() {
     console.log('Inicializando navegación...');
     
@@ -238,7 +244,9 @@ function smoothScrollTo(element) {
     });
 }
 
+// ====================================
 // CONTADORES ANIMADOS
+// ====================================
 function initCounters() {
     console.log('Inicializando contadores...');
     
@@ -293,7 +301,9 @@ function animateCounter(element) {
     }, 50);
 }
 
+// ====================================
 // EFECTOS DE SCROLL
+// ====================================
 function initScrollEffects() {
     console.log('Inicializando efectos de scroll...');
     
@@ -346,7 +356,9 @@ function updateActiveSection() {
     });
 }
 
-// NUEVO BOTÓN CTA
+// ====================================
+// BOTÓN CTA PRINCIPAL
+// ====================================
 function initNuevoBotónCTA() {
     console.log('Inicializando botón CTA...');
     
@@ -386,55 +398,110 @@ function initNuevoBotónCTA() {
     console.log('Botón CTA configurado');
 }
 
-// UTILIDADES
-function throttle(func, wait) {
-    let timeout;
-    return function executedFunction() {
-        const args = arguments;
-        const later = function() {
-            clearTimeout(timeout);
-            func.apply(this, args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
+// ====================================
+// BOTÓN DESCARGA DOSSIER EN HEADER
+// ====================================
+function initDownloadButton() {
+    console.log('Inicializando botón de descarga en header...');
+    
+    // NUEVO ID para el botón en header
+    const downloadBtn = document.getElementById('download-dossier-header');
+    
+    if (!downloadBtn) {
+        console.log('- Botón de descarga en header no encontrado');
+        return;
+    }
+    
+    downloadBtn.addEventListener('click', function(e) {
+        // Agregar efecto visual de descarga
+        this.classList.add('downloading');
+        
+        // Cambiar el icono temporalmente
+        const icon = this.querySelector('i');
+        const originalIcon = icon.className;
+        icon.className = 'fas fa-spinner';
+        
+        // Mostrar notificación de descarga
+        showNotification('📄 Iniciando descarga del dossier empresarial...', 'success');
+        
+        // Cerrar menú móvil si está abierto
+        if (isMenuOpen) {
+            closeMenu();
+        }
+        
+        // Tracking de descarga (opcional)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'download', {
+                'event_category': 'Documents',
+                'event_label': 'Dossier Empresarial YAKELU Header',
+                'value': 1
+            });
+        }
+        
+        // Restaurar estado después de 2 segundos
+        setTimeout(() => {
+            this.classList.remove('downloading');
+            icon.className = originalIcon;
+            showNotification('✅ ¡Descarga completada! Revisa tu carpeta de descargas.', 'success');
+        }, 2000);
+        
+        console.log('Descarga de dossier iniciada desde header');
+    });
+    
+    // Agregar efecto hover adicional solo en desktop
+    if (window.innerWidth > 768) {
+        downloadBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px) scale(1.05)';
+        });
+        
+        downloadBtn.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    }
+    
+    console.log('Botón de descarga en header configurado');
+}   
+// ====================================
+// FUNCIÓN PARA MOSTRAR NOTIFICACIONES
+// ====================================
+function showNotification(message, type = 'success') {
+    // Remover notificaciones existentes
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => {
+        if (notification.parentNode) {
+            notification.remove();
+        }
+    });
+    
+    // Crear nueva notificación
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto-remover después de 4 segundos
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 300);
+        }
+    }, 4000);
 }
 
-// INICIALIZACIÓN FINAL
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-    
-    setTimeout(function() {
-        if (window.innerWidth <= 768) {
-            testMobileMenu();
-        }
-    }, 2000);
-    
-    console.log('YAKELU INFRAESTRUCTURA - Sitio web cargado completamente');
-});
-
-// Manejo de errores
-window.addEventListener('error', function(e) {
-    console.error('Error en el sitio:', e.error);
-});
-
-// Manejo de redimensionado
-window.addEventListener('resize', function() {
-    if (window.innerWidth > 768 && isMenuOpen) {
-        closeMenu();
-    }
-});
-
-// Export para debugging
-window.YakeluApp = {
-    isMenuOpen: isMenuOpen,
-    openMenu: openMenu,
-    closeMenu: closeMenu,
-    testMobileMenu: testMobileMenu,
-    emergencyMenuFix: emergencyMenuFix
-};
-
+// ====================================
 // BOTÓN VOLVER ARRIBA
+// ====================================
 function initBackToTop() {
     console.log('Inicializando botón volver arriba...');
     
@@ -465,18 +532,63 @@ function initBackToTop() {
     console.log('Botón volver arriba configurado');
 }
 
-// Agregar esta línea en la función de DOMContentLoaded (línea ~25)
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM cargado - Iniciando componentes...');
+// ====================================
+// UTILIDADES
+// ====================================
+function throttle(func, wait) {
+    let timeout;
+    return function executedFunction() {
+        const args = arguments;
+        const later = function() {
+            clearTimeout(timeout);
+            func.apply(this, args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// ====================================
+// INICIALIZACIÓN FINAL
+// ====================================
+window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
     
-    initMobileMenu();
-    initNavigation();
-    initCounters();
-    initScrollEffects();
-    initNuevoBotónCTA();
-    initBackToTop(); // ← AGREGAR ESTA LÍNEA
+    setTimeout(function() {
+        if (window.innerWidth <= 768) {
+            testMobileMenu();
+        }
+    }, 2000);
     
-    console.log('YAKELU - Sistema iniciado correctamente');
+    console.log('YAKELU INFRAESTRUCTURA - Sitio web cargado completamente');
 });
+
+// ====================================
+// MANEJO DE ERRORES
+// ====================================
+window.addEventListener('error', function(e) {
+    console.error('Error en el sitio:', e.error);
+});
+
+// ====================================
+// MANEJO DE REDIMENSIONADO
+// ====================================
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768 && isMenuOpen) {
+        closeMenu();
+    }
+});
+
+// ====================================
+// EXPORT PARA DEBUGGING
+// ====================================
+window.YakeluApp = {
+    isMenuOpen: isMenuOpen,
+    openMenu: openMenu,
+    closeMenu: closeMenu,
+    testMobileMenu: testMobileMenu,
+    emergencyMenuFix: emergencyMenuFix,
+    showNotification: showNotification
+};
 
 console.log('Main.js cargado completamente');

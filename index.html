@@ -163,11 +163,10 @@
         </div>
     </div>
 
-   <!-- Header -->
+<!-- Header -->
 <header id="header">
     <nav class="nav-container">
         <a href="#home" class="nav-brand">
-            <!-- Solo el logo, sin texto -->
             <img src="assets/images/YAKELU - LOGO POSITIVO.png" 
                  alt="YAKELU INFRAESTRUCTURA" 
                  class="logo-header">
@@ -179,6 +178,17 @@
             <li><a href="#services" class="nav-link">Servicios</a></li>
             <li><a href="#experience" class="nav-link">Experiencia</a></li>
             <li><a href="#contact" class="nav-link">Contacto</a></li>
+            <!-- NUEVO BOTÓN DESCARGA EN HEADER -->
+            <li class="nav-download">
+                <a href="assets/documents/DOSSIER EMPRESARIAL - YAKELU.pdf" 
+                   download="DOSSIER EMPRESARIAL - YAKELU.pdf" 
+                   class="download-btn-header" 
+                   id="download-dossier-header"
+                   target="_blank">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>DOSSIER</span>
+                </a>
+            </li>
         </ul>
         
         <div class="mobile-menu" aria-label="Menú de navegación móvil" aria-expanded="false">
@@ -188,7 +198,6 @@
         </div>
     </nav>
 </header>
-
     <!-- Main Content -->
     <main id="main-content">
         <!-- Hero Section -->
@@ -788,7 +797,6 @@ async function enviarFormularioWeb3Forms() {
             
             counters.forEach(counter => observer.observe(counter));
 
-            // Simular carga para UX
             setTimeout(function() {
                 document.body.classList.add('loaded');
             }, 1000);
@@ -849,6 +857,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 </script>
+
+
 
 
 
