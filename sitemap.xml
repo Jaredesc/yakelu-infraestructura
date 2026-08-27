@@ -44,4 +44,51 @@
         <priority>0.8</priority>
     </url>
 
+<<<<<<< HEAD
+=======
+    <!-- Páginas de servicio -->
+    <url>
+        <loc>https://www.yakeluinfraestructura.org/servicios/obra-civil.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.yakeluinfraestructura.org/servicios/estructuras-metalicas.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.yakeluinfraestructura.org/servicios/instalaciones.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.yakeluinfraestructura.org/servicios/terracerias-pavimentos.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.yakeluinfraestructura.org/servicios/urbanizacion.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.yakeluinfraestructura.org/servicios/infraestructura-vial.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.yakeluinfraestructura.org/servicios/pisos-industriales.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+>>>>>>> 83813c4 (nuevo ajuste)
 </urlset>
